@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
 metadata:
-  name: mydeployment
+  name: mydeployment1
 spec:
   selector:
     matchLabels:
-      app: myapp
+      app: myapp1
   replicas: 3 # Number of replicas that will be created for this deployment
   template:
     metadata:
       labels:
-        app: myapp
+        app: myapp1
     spec:
       containers:
         - name: myconatiner
@@ -25,12 +25,12 @@ spec:
 apiVersion: v1 # Kubernetes API version
 kind: Service # Kubernetes resource kind we are creating
 metadata: # Metadata of the resource kind we are creating
-  name: myservice
+  name: myservice1
 spec:
   selector:
-    app: myapp
+    app: myapp1
   ports:
     - protocol: "TCP"
       port: 80 # The port that the service is running on in the cluster
       targetPort: 8080 # The port exposed by the service
-  type: NodePort # type of the service.
+  type: LoadBalancer # type of the service.
